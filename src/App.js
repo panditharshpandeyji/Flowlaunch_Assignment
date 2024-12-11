@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TaskTable from "./components/TaskTable";
 import styled from "styled-components";
 import AddTaskForm from "./components/TaskForm";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -33,28 +34,32 @@ const App = () => {
   };
 
   return (
-    <Container>
-      <Header>Task List Manager</Header>
-      <NewTaskButton onClick={() => setShowModal(true)}>New Task</NewTaskButton>
-      <TaskTable tasks={filteredTasks} setTasks={setTasks} />
-      {showModal && (
-        <Modal>
-          <ModalContent>
-            <CloseButton onClick={() => setShowModal(false)}>
-              &times;
-            </CloseButton>
-            <AddTaskForm addTask={addTask} />
-          </ModalContent>
-        </Modal>
-      )}
-    </Container>
+    <>
+      <Navbar />
+      <Container>
+        <NewTaskButton onClick={() => setShowModal(true)}>
+          New Task
+        </NewTaskButton>
+        <TaskTable tasks={filteredTasks} setTasks={setTasks} />
+        {showModal && (
+          <Modal>
+            <ModalContent>
+              <CloseButton onClick={() => setShowModal(false)}>
+                &times;
+              </CloseButton>
+              <AddTaskForm addTask={addTask} />
+            </ModalContent>
+          </Modal>
+        )}
+      </Container>
+    </>
   );
 };
 
 export default App;
 
 const Container = styled.div`
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 20px;
 `;
 
