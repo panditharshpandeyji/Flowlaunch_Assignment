@@ -12,8 +12,13 @@ const TaskTable = ({ tasks, setTasks }) => {
 
   const columns = [
     { headerName: "Task ID", field: "id", editable: false },
-    { headerName: "Title", field: "title", editable: true },
-    { headerName: "Description", field: "description", editable: true },
+    { headerName: "Title", field: "title", editable: true, filter: true },
+    {
+      headerName: "Description",
+      field: "description",
+      editable: true,
+      filter: true,
+    },
     {
       headerName: "Status",
       field: "status",
